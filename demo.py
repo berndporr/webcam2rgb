@@ -50,12 +50,18 @@ class RealtimePlotWindow:
         
 #create instances of camera and plots
 camera = webcam2rgb.Webcam2rgb(0)
-realtimePlotWindow = [RealtimePlotWindow(channel) for channel in ['Blue','Green','Red']]
+realtimePlotWindowBlue = RealtimePlotWindow("Blue")
+realtimePlotWindowGreen = RealtimePlotWindow("Green")
+realtimePlotWindowRed = RealtimePlotWindow("Red")
 
 #create callback method reading camera and plotting in windows
 def hasData(retval, data):
-    for plot, data in zip(realtimePlotWindow, data):
-        plot.addData(data)
+    b = data[0]
+    g = data[1]
+    r = data[2]
+    realtimePlotWindowBlue.addData(b)
+    realtimePlotWindowGreen.addData(g)
+    realtimePlotWindowRed.addData(r)
 
 #start the thread and stop it when we close the plot windows
 camera.start(callback = hasData)
