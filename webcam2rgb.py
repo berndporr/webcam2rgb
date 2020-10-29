@@ -87,7 +87,7 @@ class RealtimePlotWindow:
 if __name__ == '__main__':
 
     #create instances of camera and plots
-    camera = Webcam2rgb(1)
+    camera = Webcam2rgb(0)
     realtimePlotWindow = [RealtimePlotWindow(channel) for channel in ['Blue','Green','Red']]
 
     #create callback method reading camera and plotting in windows
