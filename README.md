@@ -43,6 +43,12 @@ the callback is then called at the framerate of the camera
 camera.stop()
 ```
 
+### Getting the sampling rate
+
+```
+fs = camera.cameraFs()
+```
+
 
 ## Demo
 
