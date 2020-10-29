@@ -42,3 +42,9 @@ the callback is then called at the framerate of the camera
 ```
 camera.stop()
 ```
+
+
+## Demo
+
+Just run `demo.py`. It plots the R,G,B channels in three plot windows.
+
