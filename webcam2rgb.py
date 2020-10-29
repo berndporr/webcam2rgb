@@ -5,27 +5,6 @@ import threading
 
 
 
-class CallbackThread(threading.Thread):
-
-    def __init__(self, fs, callback: classmethod, stopEvent: threading.Event):
-        super(CallbackThread,self).__init__()
-        self.stopped = stopEvent
-        self.callback = callback
-        self.stop = lambda: self.stopped.set()
-        if fs is 0:
-            self.t = 0
-        else:
-            self.t = 1/fs
-        
-    def run(self):
-        while not self.stopped.is_set():
-            if self.t is not 0:
-                self.stopped.wait(self.t)
-                
-            self.callback()
-
-
-
 class Webcam2rgb():
 
     def __init__(self, cameraNumber=0):
