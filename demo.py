@@ -46,13 +46,10 @@ class RealtimePlotWindow:
         self.ringbuffer.append(v)
 
 
-
-        
-#create instances of camera and plots
-camera = webcam2rgb.Webcam2rgb(0)
 realtimePlotWindowBlue = RealtimePlotWindow("Blue")
 realtimePlotWindowGreen = RealtimePlotWindow("Green")
 realtimePlotWindowRed = RealtimePlotWindow("Red")
+
 
 #create callback method reading camera and plotting in windows
 def hasData(retval, data):
@@ -63,8 +60,11 @@ def hasData(retval, data):
     realtimePlotWindowGreen.addData(g)
     realtimePlotWindowRed.addData(r)
 
+        
+#create instances of camera
+camera = webcam2rgb.Webcam2rgb()
 #start the thread and stop it when we close the plot windows
-camera.start(callback = hasData)
+camera.start(callback = hasData, cameraNumber=0)
 print("camera samplerate: ", camera.cameraFs(), "Hz")
 plt.show()
 camera.stop()

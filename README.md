@@ -20,7 +20,7 @@ import webcam2rgb
 ### Get an instance
 
 ```
-camera = webcam2rgb.Webcam2rgb(0)
+camera = webcam2rgb.Webcam2rgb()
 ```
 
 ### Set up a callback function
@@ -53,4 +53,3 @@ fs = camera.cameraFs()
 ## Demo
 
 Just run `demo.py`. It plots the R,G,B channels in three plot windows.
-

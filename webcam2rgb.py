@@ -7,14 +7,23 @@ import threading
 
 class Webcam2rgb():
 
-    def __init__(self, cameraNumber=0):
-        self.cam = cv2.VideoCapture(cameraNumber)
-
-    def start(self, callback):
-        self.running = True
-        self.thread = threading.Thread(target = self.calc_BRG)
-        self.thread.start()
+    def start(self, callback, cameraNumber=0, width = None, height = None, fps = None):
         self.callback = callback
+        try:
+            self.cam = cv2.VideoCapture(cameraNumber)
+            if width:
+                self.cam.set(cv2.CAP_PROP_FRAME_WIDTH,width)
+            if height:
+                self.cam.set(cv2.CAP_PROP_FRAME_HEIGHT,height)
+            if fps:
+                self.cam.set(cv2.CAP_PROP_FPS, fps)
+            self.running = True
+            self.thread = threading.Thread(target = self.calc_BRG)
+            self.thread.start()
+            self.ret_val = True
+        except:
+            self.running = False
+            self.ret_val = False
 
     def stop(self):
         self.running = False
@@ -22,11 +31,14 @@ class Webcam2rgb():
 
     def calc_BRG(self):
         while self.running:
-            ret_val, img = self.cam.read()
-            h, w, c = img.shape
-            brg = img[int(h/2),int(w/2)]
-            self.callback(ret_val,brg)
+            try:
+                self.ret_val = False
+                self.ret_val, img = self.cam.read()
+                h, w, c = img.shape
+                brg = img[int(h/2),int(w/2)]
+                self.callback(self.ret_val,brg)
+            except:
+                self.running = False
 
     def cameraFs(self):
         return self.cam.get(cv2.CAP_PROP_FPS)
-
