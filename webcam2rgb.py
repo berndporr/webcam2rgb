@@ -7,10 +7,12 @@ import threading
 
 class Webcam2rgb():
 
-    def start(self, callback, cameraNumber=0, width = None, height = None, fps = None):
+    def start(self, callback, cameraNumber=0, width = None, height = None, fps = None, directShow = False):
         self.callback = callback
         try:
-            self.cam = cv2.VideoCapture(cameraNumber)
+            self.cam = cv2.VideoCapture(cameraNumber + (cv2.CAP_DSHOW if directShow is True else 0))
+            if not self.cam.isOpened():
+                self.cam.open(0)
             if width:
                 self.cam.set(cv2.CAP_PROP_FRAME_WIDTH,width)
             if height:
