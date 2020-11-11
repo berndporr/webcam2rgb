@@ -37,6 +37,14 @@ camera.start(callback = hasData)
 ```
 the callback is then called at the framerate of the camera
 
+This method has the following optional arguments:
+
+ - `cameraNumber=0` starts acquisition from camera number `cameraNumber`
+ - `width = None` tries to set the width of the camera acquisition
+ - `height = None` tries to set the height of the camera acquisition
+ - `fps = None` tries to set the framerate
+ - `directShow = False` switches on Direct Show under Windows
+
 ### Stop the acquisition
 
 ```
