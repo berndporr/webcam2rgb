@@ -10,7 +10,7 @@ class Webcam2rgb():
     def start(self, callback, cameraNumber=0, width = None, height = None, fps = None, directShow = False):
         self.callback = callback
         try:
-            self.cam = cv2.VideoCapture(cameraNumber + cv2.CAP_DSHOW if directShow else cv2.CAP_ANY) 
+            self.cam = cv2.VideoCapture(cameraNumber + (cv2.CAP_DSHOW if directShow else cv2.CAP_ANY)) 
             if not self.cam.isOpened():
                 print('opening camera')
                 self.cam.open(0)
