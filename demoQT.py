@@ -21,7 +21,7 @@ class QtPanningPlot:
         self.win = pg.GraphicsLayoutWidget()
         self.win.setWindowTitle(title)
         self.plt = self.win.addPlot()
-        self.plt.setYRange(0,1)
+        self.plt.setYRange(0,256)
         self.plt.setXRange(0,500)
         self.curve = self.plt.plot()
         self.data = []
@@ -35,7 +35,6 @@ class QtPanningPlot:
         
     def update(self):
         self.data=self.data[-500:]
-        self.plt.setYRange(0,np.max(self.data))
         if self.data:
             self.curve.setData(np.hstack(self.data))
 
