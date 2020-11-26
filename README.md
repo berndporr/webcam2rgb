@@ -77,6 +77,6 @@ an example for Windows
 ```
 
 The problem with Spyder is that it won't let your Python program terminate properly
-which leaves the serial port in an undefined state. If you then re-run your program
-it won't be able to talk to your Arduino. In the worst case you need to reboot your
+which leaves the video camera in an undefined state. If you then re-run your program
+it won't be able to talk to your camera. In the worst case you need to reboot your
 computer. Bottomline: use Spyder for editing, run the program from the console / terminal.
