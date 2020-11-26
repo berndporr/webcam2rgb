@@ -81,4 +81,6 @@ which leaves the video camera in an undefined state. If you then re-run your pro
 it won't be able to talk to your camera. In the worst case you need to reboot your
 computer. Bottomline: use Spyder for editing, run the program from the console / terminal.
 
+### Windows
+
 Under Windows, sometimes the camera initilisation does not open the camera correctly - shown by a 0Hz readout from `camera.cameraFs()`. If this happens the camera needs to be reopened manually. Try using the `directShow = True` parameter to use the Direct Show backend.
