@@ -61,3 +61,22 @@ fs = camera.cameraFs()
 ## Demo
 
 Just run `demo.py`. It plots the R,G,B channels in three plot windows.
+
+
+## Troubleshooting
+
+### Spyder
+
+Start your program from the (Anaconda-) console / terminal and never within Spyder. Here is
+an example for Windows
+
+```
+    (base) D:\>
+    (base) D:\>cd webcam2rgb
+    (base) D:\webcam2rgb>python demo.py
+```
+
+The problem with Spyder is that it won't let your Python program terminate properly
+which leaves the serial port in an undefined state. If you then re-run your program
+it won't be able to talk to your Arduino. In the worst case you need to reboot your
+computer. Bottomline: use Spyder for editing, run the program from the console / terminal.
