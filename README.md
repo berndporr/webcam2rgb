@@ -2,7 +2,15 @@
 Turning your webcam into a simple RGB light sensor
 sampling at the framerate.
 
-## Prerequisites
+## Installation
+
+Install it in your local package repository with `--user` otherwise
+become admin and omit it:
+```
+setup.py install --user
+```
+
+## Prerequisites for development 
 
 ```
 pip3 install opencv-contrib-python
